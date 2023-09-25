@@ -8,6 +8,5 @@ import { environmentAlbum } from '../environments/environment.prod';
 })
 export class AuthService {
 
-  constructor(private http : HttpClient) { }
 
 }
