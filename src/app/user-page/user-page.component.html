@@ -1,1 +1,13 @@
-<p>user-page works!</p>
+<div class="user-main">
+  <div class="user-info">
+    <div class="container" *ngIf="user">
+      <h2>{{ user.firstName }} {{ user.lastName }}</h2>
+      <p>Description: {{ user.description }}</p>
+      <img [src]="user.profilePic" style="width: 200px; height: 200px;">
+    </div>
+  </div>
+  <div class="user-friends">
+
+  </div>
+</div>
+

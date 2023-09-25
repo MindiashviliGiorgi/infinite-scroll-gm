@@ -3,6 +3,7 @@ import { Component, ElementRef, HostListener, } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { Users } from '../auth/auth';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 
 
@@ -13,12 +14,15 @@ import { map } from 'rxjs/operators';
 })
 export class HomePageComponent {
 
-constructor(private http: HttpClient, private elementRef: ElementRef) {}
+constructor(
+  private http: HttpClient, 
+  private elementRef: ElementRef) {}
 
 usersList: Users[] = [];
 pageSize: number = 3;
 currentPage: number = 1;
 loading: boolean = false;
+loadingDone : boolean = false;
 
 ngOnInit(): void {
   this.loadItems(this.currentPage);
@@ -54,8 +58,9 @@ loadItems(page: number) {
     .subscribe((fetchedUsers) => {
       this.usersList = this.usersList.concat(fetchedUsers);
       this.loading = false;
-      console.log('Loaded users for page', page, fetchedUsers);
-    });
+    }); 
+
+
 }
 
 @HostListener('window:scroll', ['$event'])
@@ -63,8 +68,11 @@ onScroll(event: Event): void {
   if (window.innerHeight + window.scrollY >= this.elementRef.nativeElement.offsetHeight) {
     this.currentPage++;
     this.loadItems(this.currentPage);
-  }
-}
+  };
+};
+
+
+
 
 
 }
