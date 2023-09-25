@@ -1,0 +1,10 @@
+<ul *ngFor="let user of usersList; index as i">
+  <li>{{ i + 1 }}</li>
+  <li>{{ user.firstName }}</li>
+  <li>{{ user.lastName }}</li>
+  <li>{{ user.description }}</li>
+  <li>
+    <img src="{{user.profilePic}}" style="width: 200px; height: 200px;">
+  </li>
+</ul>
+
