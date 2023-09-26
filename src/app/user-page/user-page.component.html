@@ -1,13 +1,21 @@
-<div class="user-main">
-  <div class="user-info">
-    <div class="container" *ngIf="user">
-      <h2>{{ user.firstName }} {{ user.lastName }}</h2>
-      <p>Description: {{ user.description }}</p>
-      <img [src]="user.profilePic" style="width: 200px; height: 200px;">
-    </div>
+<div class="main">
+  <div class="title">
+    <h1>Friends List</h1>
   </div>
-  <div class="user-friends">
-
+  <ul *ngFor="let frined of friendsList">
+    <li>
+      <img src="{{ frined.profilePic }}">
+    </li>
+    <li>{{ frined.firstName }}</li>
+    <li>{{ frined.lastName }}</li>
+    <li>{{ frined.description }}</li>
+  </ul>
+</div>
+<div class="user">
+  <div class="container" *ngIf="user">
+    <img [src]="user.profilePic" style="width: 200px; height: 200px;">
+    <h2>{{ user.firstName }} {{ user.lastName }}'s profile</h2>
+    <p>{{ user.description }}</p>
+    <button [routerLink]="''">Back to home page</button>
   </div>
 </div>
-
